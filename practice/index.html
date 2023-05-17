@@ -1,0 +1,72 @@
+<!-- index.html -->
+<html>
+
+<body>
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+
+
+    <script type="text/jsx">
+        const app = document.getElementById('app');
+
+  function Header() {
+
+    const blogs = [
+    {
+        title: "Monday is shit",
+        text:"OMG, I cant believe hahaha",
+        like: 10
+    },
+    {
+        title: "Tuesday is better",
+        text:"boo! no need more",
+        like: 11
+    },
+    {
+        title: "Wednesday is best",
+        text:"chocolate day!!!!!!",
+        like: 2
+    },
+    {
+        title: "Thursday is terrible",
+        text:"Cake day!!!!!!",
+        like: 20
+    }
+    
+    ];
+
+    return <div>
+        {
+            blogs.map((obj) => <Duck title={obj.title} content={obj.text} love={obj.like}/>)
+        }
+
+    </div>
+}
+
+function Duck({title, content, love}){
+    const [likes, setLikes] = React.useState(love); // beginning = 0
+    const whenClick = () => {
+        setLikes(love + 1)
+    }
+ 
+    return (
+        <div>
+            <h1 >{title} </h1>
+            <button onClick={whenClick}> hit the like ({likes})</button>
+            <p> {content} </p>
+            <br/>
+            <br/>
+        </div>
+        )
+}
+
+        ReactDOM.render(<Header />, app);
+    </script>
+</body>
+
+</html>
